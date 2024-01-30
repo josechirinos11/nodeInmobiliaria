@@ -32,4 +32,10 @@ const Usuario = db.define('usuarios', {
 })
 
 
+// Metodos personalizados por usar sequalize
+
+Usuario.prototype.verificarPassword = function(password) {
+    return bcrypt.compareSync(password, this.password)
+}
+
 export default Usuario
