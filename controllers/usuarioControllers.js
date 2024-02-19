@@ -332,7 +332,8 @@ const autenticar = async (req, res) => {
         return res.render('auth/login', {
             paguina: 'LOGIN',
             csrfToken: req.csrfToken(),
-            mensaje: 'el password es incorrecto'
+            errores: [{msg: 'el password es incorrecto'}]
+            
         }
         )
     }
@@ -350,6 +351,7 @@ const autenticar = async (req, res) => {
     // renderizamos la vista
     return res.cookie('_token', token, {
         httpOnly: true,
+        
         // secure: true
         //samesite: true
     }).redirect('/mis-propiedades')
